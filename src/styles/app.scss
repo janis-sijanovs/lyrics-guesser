@@ -1,0 +1,253 @@
+@import 'variables';
+@import 'default';
+
+body {
+    background-color: $app-background;
+    padding: 6vh 30px;
+}
+
+.app {
+    min-width: 80vw;
+    width: fit-content;
+    min-height: 88vh;
+    background-color: white;
+    margin: auto;
+    border: 2px solid $border-color;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation {
+    padding: 30px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    border-bottom: 3px solid $border-color;
+    color: $light;
+    background-color: $primary;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 72px;
+    color: $light;
+    margin-right: 40px;
+    margin-top: -8px;
+}
+
+.button {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: fit-content;
+    background-color: rgb(55, 69, 145);
+    border: 6px solid rgb(58, 58, 58);
+    border-radius: 60px;
+    color: white;
+    font-size: 42px;
+
+
+    &:hover {
+        color: $accent;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
+    }
+
+    &:active {
+        color: $accent-active;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+.button--big {
+    font-size: 62px;
+}
+
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.bindings-list {
+    display: flex;
+    gap: 10px;
+}
+
+.category-title {
+    font-size: 42px;
+    margin-top: 50px;
+}
+
+.input {
+    padding: 10px;
+    font-size: 32px;
+    border-radius: 10px;
+
+    &:hover {
+        box-shadow: inset 0 0 5px #000000;
+    }
+
+    &:active {
+        box-shadow: inset 0 0 15px #000000;
+    }
+}
+
+.label {
+    font-size: 32px;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.double {
+    zoom: 2;
+    transform: scale(2);
+    -ms-transform: scale(2);
+    -webkit-transform: scale(2);
+    -o-transform: scale(2);
+    -moz-transform: scale(2);
+    transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    margin-top: -31px;
+  }
+
+.double input {
+    accent-color: $primary;
+    position: absolute;
+}
+
+.key-button {
+    padding: 10px;
+    font-size: 32px;
+    border-radius: 10px;
+    position: relative;
+    width: fit-content;
+
+    &:hover {
+        box-shadow: inset 0 0 5px #000000;
+    }
+
+    &:active {
+        box-shadow: inset 0 0 15px #000000;
+}
+}
+
+.key-button__key-tag {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    color: $light;
+    border-radius: 5px;
+    padding: 0 5px;
+    border: 3px solid rgb(46, 46, 46);
+background-color: $secondary;
+}
+
+.navigation__link {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 32px;
+    color: $light;
+
+    &:hover {
+        color: $accent;
+    }
+
+    &:active {
+        color: $accent-active;
+}
+}
+
+.page {
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $accent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    color: $primary;
+    text-shadow: $text-border-light;
+    font-size: 54px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.timer {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 52px;
+    color: $light;
+    margin-left: 200px;
+}
+
+.split-page__container {
+    flex: 1 0 auto;
+    border-left: 2px solid $border-color;
+    padding:0 30px;
+}
+
+.split-page__container--no-border {
+    border: none;
+}
+
+.split-page {
+    display: flex;
+    padding: 30px 0;
+    flex-grow: 1;
+}
+
+.option-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.skip {
+    align-self: center;
+}
+
+.top-panel {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 42px;
+    font-weight: bold;
+    color: $primary;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+
+.lyrics {
+    text-align: center;
+    padding: 20px;
+    border: 3px solid black;
+    border-radius: 16px;
+    width: fit-content;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    font-size: 32px;
+}
