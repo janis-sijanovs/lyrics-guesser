@@ -10,6 +10,7 @@ export default defineComponent({
   name: "PlayView",
   setup() {
     const points = [0, 0];
+    let errorRecieved = false;
     let playerReadiness = 0;
 
     const settingsStore = useSettingsStore();
@@ -28,8 +29,8 @@ export default defineComponent({
       playerReadiness += 1;
 
       if (
-        playerReadiness === 2 ||
-        (playerReadiness === 1 && singlePlayer.value)
+        !errorRecieved &&
+        (playerReadiness === 2 || (playerReadiness === 1 && singlePlayer.value))
       ) {
         event.message = "Generated! \n Click to start";
         event.overlayClickHandler = () => startGame();
@@ -43,6 +44,17 @@ export default defineComponent({
 
     const recieveScore = (player: number, value: number) => {
       points[player] = value;
+    };
+
+    const recieveError = (error: string) => {
+      if (
+        playerReadiness === 0 ||
+        (playerReadiness === 1 && !singlePlayer.value)
+      ) {
+        event.message = `Error: \n ${error}`;
+        event.overlayClickHandler = () => router.go(-1);
+        errorRecieved = true;
+      }
     };
 
     const finishGame = () => {
@@ -63,6 +75,7 @@ export default defineComponent({
       finishGame,
       recieveReadiness,
       recieveScore,
+      recieveError,
       event,
       singlePlayer,
     };
@@ -96,6 +109,7 @@ export default defineComponent({
           :player="0"
           @recieveScore="recieveScore"
           @recieveReadiness="recieveReadiness"
+          @recieveError="recieveError"
         />
       </div>
       <div class="split-page__container" v-if="!singlePlayer">
@@ -104,6 +118,7 @@ export default defineComponent({
           :player="1"
           @recieveScore="recieveScore"
           @recieveReadiness="recieveReadiness"
+          @recieveError="recieveError"
         />
       </div>
     </div>

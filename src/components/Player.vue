@@ -42,6 +42,10 @@ export default defineComponent({
       context.emit("recieveReadiness");
     };
 
+    const emmitError = (error: string) => {
+      context.emit("recieveError", error);
+    };
+
     const handleKeyboardEvent = (e: KeyboardEvent) => {
       if (e.key === skipKey.value) {
         passTurn();
@@ -86,8 +90,15 @@ export default defineComponent({
       return randomLine;
     };
     const fetchLyrics = async (count: number): Promise<string[]> => {
-      const { data } = await axios.get(count.toString());
-      return data.map((song: { lyrics: string }) => song.lyrics);
+      try {
+        const { data } = await axios.get(count.toString());
+        return data.map((song: { lyrics: string }) => song.lyrics);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          emmitError(error.message);
+        }
+        return [] as string[];
+      }
     };
     const formatLyrics = async () => {
       let newLines = await fetchLyrics(cachedLyrics.value);
@@ -144,7 +155,13 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      switchInitialValues();
+      try {
+        switchInitialValues();
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          emmitError(error.message);
+        }
+      }
     });
     onUnmounted(() => {
       document.removeEventListener("keyup", handleKeyboardEvent);
