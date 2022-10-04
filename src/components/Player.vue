@@ -85,10 +85,12 @@ export default defineComponent({
       }
       return randomLine;
     };
+
     const fetchLyrics = async (count: number): Promise<string[]> => {
       const { data } = await axios.get(count.toString());
       return data.map((song: { lyrics: string }) => song.lyrics);
     };
+
     const formatLyrics = async () => {
       let newLines = await fetchLyrics(cachedLyrics.value);
 

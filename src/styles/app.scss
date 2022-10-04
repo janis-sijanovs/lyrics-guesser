@@ -3,11 +3,12 @@
 
 body {
     background-color: $app-background;
-    padding: 6vh 30px;
+    padding: 1vh 30px;
 }
 
 .app {
     min-width: 80vw;
+    max-width: 80vw;
     width: fit-content;
     min-height: 88vh;
     background-color: white;
@@ -204,6 +205,7 @@ background-color: $secondary;
 }
 
 .split-page__container {
+    width: 50%;
     flex: 1 0 auto;
     border-left: 2px solid $border-color;
     padding:0 30px;

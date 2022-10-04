@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 
 export const useSettingsStore = defineStore("settings", {
   state: () => ({
-    cachedLyrics: 15,
+    cachedLyrics: 20,
     maxLines: 4,
     singlePlayer: false,
     minutes: 0,
